@@ -1,5 +1,7 @@
 import React from 'react'
-import InlineStyle from '../style'
+
+import InlineStyle from '../../style'
+// import '../../style-placeholder.css'
 
 const Button = ({ onClick, disabled, className, text }) => (
   <>
