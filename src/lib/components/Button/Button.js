@@ -1,15 +1,18 @@
 import React from 'react'
-import './styles.css'
+import InlineStyle from '../style'
 
 const Button = ({ onClick, disabled, className, text }) => (
-  <button
-    type="button"
-    className={`button-test ${className}`}
-    onClick={onClick}
-    disabled={disabled}
-  >
-    {text}
-  </button>
+  <>
+    <button
+      type="button"
+      className={`button-test ${className}`}
+      onClick={onClick}
+      disabled={disabled}
+    >
+      {text}
+    </button>
+    <InlineStyle />
+  </>
 )
 
 Button.defaultProps = {
