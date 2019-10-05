@@ -14,7 +14,8 @@
   "scripts": {
     "dev": "run-p build:watch start",
     "start": "styleguidist server --open",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "prepare": "npm run build"
   },
   "dependencies": {},
   "peerDependencies": {

@@ -6,8 +6,8 @@ node_modules
 
 # builds
 build
-coverage
 dist
+coverage
 .rpt2_cache
 
 # misc
