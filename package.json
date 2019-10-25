@@ -14,7 +14,8 @@
   "scripts": {
     "dev": "run-p build:watch start",
     "start": "styleguidist server --open",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "vanilla": "open ./vanilla/vanilla-topbar.html"
   },
   "dependencies": {},
   "peerDependencies": {

@@ -1,14 +1,13 @@
-const React = require('react')
-const Button = require('../Button/Button')
+import React from 'react'
+import Button from '../Button/Button'
 
-// import '../style-placeholder.css'
+import '../style-placeholder.css'
 
 const MOBILE_WIDTH = 800
 
 class TopBar extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { selected: -1 }
+  state = {
+    selected: -1,
   }
 
   render() {
@@ -95,4 +94,4 @@ TopBar.defaultProps = {
   ],
 }
 
-module.exports = TopBar
+export default TopBar
