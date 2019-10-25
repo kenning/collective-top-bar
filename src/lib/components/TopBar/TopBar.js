@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import Button from '../Button/Button'
 
-import InlineStyle from '../../style'
-// import './style-placeholder.css'
+import './style-placeholder.css'
 
 const MOBILE_WIDTH = 800
 
@@ -25,8 +24,6 @@ function TopBar({ icons }) {
 
   return (
     <div className="top-navbar-wrapper">
-      <InlineStyle />
-
       <div className="top-navbar-buttons">
         {icons.map((x, idx) => (
           <Button info={propFactory(idx)} />
