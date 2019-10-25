@@ -1,49 +1,59 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Button from '../Button/Button'
 
 import '../style-placeholder.css'
 
 const MOBILE_WIDTH = 800
 
-function TopBar({ icons }) {
-  const [selected, setSelected] = useState(-1)
-  const onClickFactory = (idx) => (evt) => {
-    if (MOBILE_WIDTH < window.innerWidth) {
-      window.location = icons[idx].url
-    } else {
-      selected === -1 ? setSelected(idx) : setSelected(-1)
-    }
+class TopBar extends React.Component {
+  state = {
+    selected: -1,
   }
 
-  const propFactory = (idx) => {
-    return {
-      ...icons[idx],
-      key: idx,
-      onClick: onClickFactory(idx),
+  render() {
+    const { icons } = this.props
+    const { selected } = this.state
+    const setSelected = (x) => {
+      this.setState({ selected: x })
     }
-  }
+    const onClickFactory = (idx) => (evt) => {
+      if (MOBILE_WIDTH < window.innerWidth) {
+        window.location = icons[idx].url
+      } else {
+        selected === -1 ? setSelected(idx) : setSelected(-1)
+      }
+    }
 
-  return (
-    <div className="top-navbar-wrapper">
-      <div className="top-navbar-buttons">
-        {icons.map((x, idx) => (
-          <Button info={propFactory(idx)} />
-        ))}
-      </div>
-      {selected >= 0 ? (
-        <div className="top-navbar-mobile-preview">
-          <div className="text">{icons[selected].text}</div>
-          <button
-            onClick={() => {
-              window.location = icons[selected].url
-            }}
-          >
-            GO
-          </button>
+    const propFactory = (idx) => {
+      return {
+        ...icons[idx],
+        key: idx,
+        onClick: onClickFactory(idx),
+      }
+    }
+
+    return (
+      <div className="top-navbar-wrapper">
+        <div className="top-navbar-buttons">
+          {icons.map((x, idx) => (
+            <Button info={propFactory(idx)} />
+          ))}
         </div>
-      ) : null}
-    </div>
-  )
+        {selected >= 0 ? (
+          <div className="top-navbar-mobile-preview">
+            <div className="text">{icons[selected].text}</div>
+            <button
+              onClick={() => {
+                window.location = icons[selected].url
+              }}
+            >
+              GO
+            </button>
+          </div>
+        ) : null}
+      </div>
+    )
+  }
 }
 
 TopBar.defaultProps = {
