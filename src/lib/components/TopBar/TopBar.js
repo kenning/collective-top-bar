@@ -6,8 +6,9 @@ const Button = require('../Button/Button')
 const MOBILE_WIDTH = 800
 
 class TopBar extends React.Component {
-  state = {
-    selected: -1,
+  constructor(props) {
+    super(props)
+    this.state = { selected: -1 }
   }
 
   render() {
