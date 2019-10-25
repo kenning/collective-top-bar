@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Button from '../Button/Button'
 
-import './style-placeholder.css'
+import '../style-placeholder.css'
 
 const MOBILE_WIDTH = 800
 
