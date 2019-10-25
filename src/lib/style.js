@@ -5,11 +5,6 @@ const InlineStyle = () => {
     <style
       dangerouslySetInnerHTML={{
         __html: `
-        /* STyleguidist shit, ignore! */
-        footer {
-          display: none;
-        }
-        
         /**
          * Boilerplate from example 
          */
