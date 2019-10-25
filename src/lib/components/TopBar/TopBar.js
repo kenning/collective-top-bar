@@ -1,7 +1,7 @@
-import React from 'react'
-import Button from '../Button/Button'
+const React = require('react')
+const Button = require('../Button/Button')
 
-import '../style-placeholder.css'
+// import '../style-placeholder.css'
 
 const MOBILE_WIDTH = 800
 
@@ -94,4 +94,4 @@ TopBar.defaultProps = {
   ],
 }
 
-export default TopBar
+module.exports = TopBar

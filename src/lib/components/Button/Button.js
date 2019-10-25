@@ -1,7 +1,6 @@
-import React from 'react'
+const React = require('react')
 
-// import InlineStyle from '../../style'
-import '../style-placeholder.css'
+// import '../style-placeholder.css'
 
 const Button = ({ info }) => {
   const { onClick, disabled, iconSpriteStyleLine, className, text, key } = info
@@ -22,4 +21,4 @@ const Button = ({ info }) => {
   )
 }
 
-export default Button
+module.exports = Button
