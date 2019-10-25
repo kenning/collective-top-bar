@@ -9,7 +9,7 @@ function TopBar({ icons }) {
   const [selected, setSelected] = useState(-1)
   const onClickFactory = (idx) => (evt) => {
     if (MOBILE_WIDTH < window.innerWidth) {
-      alert('going to ' + icons[idx].url)
+      window.location = icons[idx].url
     } else {
       selected === -1 ? setSelected(idx) : setSelected(-1)
     }
@@ -33,7 +33,13 @@ function TopBar({ icons }) {
       {selected >= 0 ? (
         <div className="top-navbar-mobile-preview">
           <div className="text">{icons[selected].text}</div>
-          <button>GO</button>
+          <button
+            onClick={() => {
+              window.location = icons[selected].url
+            }}
+          >
+            GO
+          </button>
         </div>
       ) : null}
     </div>
@@ -45,7 +51,6 @@ TopBar.defaultProps = {
     {
       iconSpriteStyleLine:
         'url(http://localhost:3000/library/blog/assets/blog1/dilbert.png) 107px 71px',
-      onClick: () => {},
       disabled: false,
       className: null,
       text: 'Front Page',
@@ -54,7 +59,6 @@ TopBar.defaultProps = {
     {
       iconSpriteStyleLine:
         'url(http://localhost:3000/library/blog/assets/blog1/dilbert.png) 0px 50px',
-      onClick: () => {},
       disabled: false,
       className: null,
       text: 'News',
@@ -63,7 +67,6 @@ TopBar.defaultProps = {
     {
       iconSpriteStyleLine:
         'url(http://localhost:3000/library/blog/assets/blog1/dilbert.png) 107px 71px',
-      onClick: () => {},
       disabled: false,
       className: null,
       text: 'Front Page',
@@ -72,7 +75,6 @@ TopBar.defaultProps = {
     {
       iconSpriteStyleLine:
         'url(http://localhost:3000/library/blog/assets/blog1/dilbert.png) 0px 50px',
-      onClick: () => {},
       disabled: false,
       className: null,
       text: 'News',
@@ -81,7 +83,6 @@ TopBar.defaultProps = {
     {
       iconSpriteStyleLine:
         'url(http://localhost:3000/library/blog/assets/blog1/dilbert.png) 107px 71px',
-      onClick: () => {},
       disabled: false,
       className: null,
       text: 'Front Page',
@@ -90,7 +91,6 @@ TopBar.defaultProps = {
     {
       iconSpriteStyleLine:
         'url(http://localhost:3000/library/blog/assets/blog1/dilbert.png) 0px 50px',
-      onClick: () => {},
       disabled: false,
       className: null,
       text: 'News',
