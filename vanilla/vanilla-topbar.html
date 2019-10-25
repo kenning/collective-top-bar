@@ -142,7 +142,7 @@
         <div class="top-navbar-buttons"></div>
         <div class="top-navbar-mobile-preview hidden">
           <div class="text"></div>
-          <button onclick="goOnClick()">
+          <button class="go-button">
             GO
           </button>
         </div>
@@ -218,6 +218,8 @@
         $(".top-navbar-buttons").appendChild(newButton);
         newButton.onclick = onClickFactory(i);
       }
+
+      $(".go-button").onclick = goOnClick;
 
       // Runs AFTER selected is changed
       var updateMobilePreviewText = () => {
