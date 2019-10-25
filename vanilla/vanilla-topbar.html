@@ -2,8 +2,8 @@
   <head>
     <style>
       /**
-         * Boilerplate from example 
-         */
+        * Boilerplate from example 
+        */
 
       /* Boilerplate from example */
       .top-navbar-mobile-preview button,
@@ -40,12 +40,12 @@
       }
 
       /***********
-         * New code
-         **********/
+        * New code
+        **********/
 
       /**
-         * Button 
-         */
+        * Button 
+        */
       :root {
         --top-navbar-sprite-size: 50px;
         --top-navbar-bg-color: black;
@@ -83,8 +83,8 @@
       }
 
       /**
-         * Top navbar 
-         */
+        * Top navbar 
+        */
 
       .top-navbar-wrapper {
         position: fixed;
@@ -137,6 +137,17 @@
         display: none;
       }
     </style>
+    <body>
+      <div class="top-navbar-wrapper">
+        <div class="top-navbar-buttons"></div>
+        <div class="top-navbar-mobile-preview hidden">
+          <div class="text"></div>
+          <button onclick="goOnClick()">
+            GO
+          </button>
+        </div>
+      </div>
+    </body>
     <script>
       /* Initialization */
       $ = document.querySelector.bind(document);
@@ -176,9 +187,9 @@
         if (MOBILE_WIDTH < window.innerWidth) {
           window.location = icons[idx].url;
         } else {
-          if (selected === -1) {
+          if (selected !== idx) {
             selected = idx;
-            updateDom();
+            updateMobilePreviewText();
 
             $(".top-navbar-mobile-preview").classList.remove("hidden");
           } else {
@@ -192,57 +203,29 @@
         window.location = icons[selected].url;
       };
 
+      // Create every button
+      for (var i = 0; i < icons.length; i++) {
+        var newButton = document.createElement("button");
+        var pic = document.createElement("div");
+        pic.style.background = icons[i].iconSpriteStyleLine;
+        pic.className = "top-navbar-button-sprite";
+        newButton.appendChild(pic);
+        var txt = document.createElement("div");
+        txt.innerText = icons[i].text;
+        txt.className = "top-navbar-button-text";
+        newButton.appendChild(txt);
+        newButton.classList.add("top-navbar-button");
+        $(".top-navbar-buttons").appendChild(newButton);
+        newButton.onclick = onClickFactory(i);
+      }
+
       // Runs AFTER selected is changed
-      var updateDom = () => {
-        // The money
-
-        // Recreate all buttons
-        var parent = $(".top-navbar-buttons");
-        while (parent.hasChildNodes()) {
-          parent.removeChild(parent.lastChild);
-        }
-        for (var i = 0; i < icons.length; i++) {
-          var newButton = document.createElement("button");
-          var pic = document.createElement("div");
-          pic.style.background = icons[i].iconSpriteStyleLine;
-          pic.className = "top-navbar-button-sprite";
-          newButton.appendChild(pic);
-          var txt = document.createElement("div");
-          txt.innerText = icons[i].text;
-          txt.className = "top-navbar-button-text";
-          newButton.appendChild(txt);
-          newButton.classList.add("top-navbar-button");
-          $(".top-navbar-buttons").appendChild(newButton);
-          newButton.onclick = onClickFactory(i);
-        }
-
+      var updateMobilePreviewText = () => {
         if (selected !== -1) {
           $(".top-navbar-mobile-preview .text").innerText =
             icons[selected].text;
         }
-
-        // ;<button class="top-navbar-button" disabled={disabled} key={key}>
-        //   <div
-        //     style={{ background: iconSpriteStyleLine }}
-        //     className="top-navbar-button-sprite"
-        //   />
-        //   <div className="top-navbar-button-text">{text}</div>
-        // </button>
       };
     </script>
   </head>
-  <body>
-    <div class="top-navbar-wrapper">
-      <div class="top-navbar-buttons"></div>
-      <div class="top-navbar-mobile-preview hidden">
-        <div class="text"></div>
-        <button onclick="goOnClick()">
-          GO
-        </button>
-      </div>
-    </div>
-    <script>
-      updateDom();
-    </script>
-  </body>
 </html>
