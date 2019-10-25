@@ -1,3 +1,8 @@
+/* STyleguidist shit, ignore! */
+footer {
+  display: none;
+}
+
 /**
  * Boilerplate from example 
  */
@@ -15,6 +20,7 @@
 /* Example wonky click animation */
 .top-navbar-mobile-preview button:after,
 .top-navbar-button:after {
+  pointer-events: none;
   content: '';
   background: var(--top-navbar-button-anim-color);
   display: block;
@@ -48,7 +54,8 @@
   --top-navbar-text-color: #ddd;
   --top-navbar-button-bg-color: #444;
   --top-navbar-button-anim-color: #888;
-  --top-navbar-mobile-breakpoint: 800px; /* Defined separately in js!! */
+  /* --top-navbar-mobile-breakpoint: 800px; Defined separately in js and 
+  inline at bottom!! */
   --top-navbar-interbutton-padding: 5px;
 }
 
@@ -70,7 +77,7 @@
 }
 
 .top-navbar-button-text {
-  padding-left: 5px;
+  margin-left: 5px;
   font-size: 18px;
   text-align: center;
   text-decoration: none;
@@ -95,26 +102,35 @@
 }
 .top-navbar-mobile-preview {
   padding-top: var(--top-navbar-interbutton-padding);
-  display: flex;
+  display: none;
   width: 100%;
 }
 .top-navbar-mobile-preview .text,
 .top-navbar-mobile-preview button {
   color: var(--top-navbar-text-color);
   display: flex;
-  width: 50%;
   justify-content: center;
   align-items: center;
-  background-color: var(--top-navbar-button-bg-color);
-  padding: 10px;
+  padding: 10px 10px 14px;
 }
 .top-navbar-mobile-preview .text {
   margin-right: var(--top-navbar-interbutton-padding);
+  width: 100%;
+}
+.top-navbar-mobile-preview button {
+  width: 20%;
+  background-color: var(--top-navbar-button-bg-color);
 }
 
 /* Responsiveness */
-@media (max-width: --top-navbar-mobile-breakpoint) {
+
+/* Mobile */
+/* @media (max-width: --top-navbar-mobile-breakpoint) { */
+@media (max-width: 800px) {
   .top-navbar-mobile-preview {
+    display: flex;
+  }
+  .top-navbar-button-text {
     display: none;
   }
 }

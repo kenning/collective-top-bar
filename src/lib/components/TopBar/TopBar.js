@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Button from '../Button/Button'
 
-// import InlineStyle from '../../style'
+import InlineStyle from '../../style'
 // import './style-placeholder.css'
 
 const MOBILE_WIDTH = 800
@@ -12,7 +12,7 @@ function TopBar({ icons }) {
     if (MOBILE_WIDTH < window.innerWidth) {
       alert('going to ' + icons[idx].url)
     } else {
-      setSelected(idx)
+      selected === -1 ? setSelected(idx) : setSelected(-1)
     }
   }
 
@@ -25,12 +25,12 @@ function TopBar({ icons }) {
 
   return (
     <div className="top-navbar-wrapper">
+      <InlineStyle />
+
       <div className="top-navbar-buttons">
-        <Button info={propFactory(0)} />
-        <Button info={propFactory(1)} />
-        <Button info={propFactory(0)} />
-        <Button info={propFactory(1)} />
-        {/* <InlineStyle /> */}
+        {icons.map((x, idx) => (
+          <Button info={propFactory(idx)} />
+        ))}
       </div>
       {selected >= 0 ? (
         <div className="top-navbar-mobile-preview">
@@ -44,6 +44,42 @@ function TopBar({ icons }) {
 
 TopBar.defaultProps = {
   icons: [
+    {
+      iconSpriteStyleLine:
+        'url(http://localhost:3000/library/blog/assets/blog1/dilbert.png) 107px 71px',
+      onClick: () => {},
+      disabled: false,
+      className: null,
+      text: 'Front Page',
+      url: '/',
+    },
+    {
+      iconSpriteStyleLine:
+        'url(http://localhost:3000/library/blog/assets/blog1/dilbert.png) 0px 50px',
+      onClick: () => {},
+      disabled: false,
+      className: null,
+      text: 'News',
+      url: '/news/',
+    },
+    {
+      iconSpriteStyleLine:
+        'url(http://localhost:3000/library/blog/assets/blog1/dilbert.png) 107px 71px',
+      onClick: () => {},
+      disabled: false,
+      className: null,
+      text: 'Front Page',
+      url: '/',
+    },
+    {
+      iconSpriteStyleLine:
+        'url(http://localhost:3000/library/blog/assets/blog1/dilbert.png) 0px 50px',
+      onClick: () => {},
+      disabled: false,
+      className: null,
+      text: 'News',
+      url: '/news/',
+    },
     {
       iconSpriteStyleLine:
         'url(http://localhost:3000/library/blog/assets/blog1/dilbert.png) 107px 71px',
