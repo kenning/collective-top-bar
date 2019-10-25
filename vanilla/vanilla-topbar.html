@@ -19,7 +19,7 @@
       .top-navbar-mobile-preview button:after,
       .top-navbar-button:after {
         pointer-events: none;
-        content: '';
+        content: "";
         background: var(--top-navbar-button-anim-color);
         display: block;
         position: absolute;
@@ -139,85 +139,86 @@
     </style>
     <script>
       /* Initialization */
-      $ = document.querySelector.bind(document)
+      $ = document.querySelector.bind(document);
 
-      var MOBILE_WIDTH = 800
+      var MOBILE_WIDTH = 800;
 
-      var selected = -1
+      var selected = -1;
 
       var icons = [
         {
           iconSpriteStyleLine:
-            'url(http://localhost:3000/library/blog/assets/blog1/dilbert.png) 107px 71px',
-          text: 'Front Page',
-          url: '/',
+            "url(http://localhost:3000/library/blog/assets/blog1/dilbert.png) 107px 71px",
+          text: "Front Page",
+          url: "/"
         },
         {
           iconSpriteStyleLine:
-            'url(http://localhost:3000/library/blog/assets/blog1/dilbert.png) 107px 71px',
-          text: 'Library',
-          url: '/library/docs/welcome',
+            "url(http://localhost:3000/library/blog/assets/blog1/dilbert.png) 107px 71px",
+          text: "Library",
+          url: "/library/docs/welcome"
         },
         {
           iconSpriteStyleLine:
-            'url(http://localhost:3000/library/blog/assets/blog1/dilbert.png) 107px 71px',
-          text: 'Blog',
-          url: '/library/blog/',
+            "url(http://localhost:3000/library/blog/assets/blog1/dilbert.png) 107px 71px",
+          text: "Blog",
+          url: "/library/blog/"
         },
         {
           iconSpriteStyleLine:
-            'url(http://localhost:3000/library/blog/assets/blog1/dilbert.png) 107px 71px',
-          text: 'Links',
-          url: '/library/links/',
-        },
-      ]
+            "url(http://localhost:3000/library/blog/assets/blog1/dilbert.png) 107px 71px",
+          text: "Links",
+          url: "/library/links/"
+        }
+      ];
 
-      var onClickFactory = (idx) => (evt) => {
+      var onClickFactory = idx => evt => {
         if (MOBILE_WIDTH < window.innerWidth) {
-          window.location = icons[idx].url
+          window.location = icons[idx].url;
         } else {
           if (selected === -1) {
-            selected = idx
-            updateDom()
+            selected = idx;
+            updateDom();
 
-            $('.top-navbar-mobile-preview').classList.remove('hidden')
+            $(".top-navbar-mobile-preview").classList.remove("hidden");
           } else {
-            selected = -1
-            $('.top-navbar-mobile-preview').classList.add('hidden')
+            selected = -1;
+            $(".top-navbar-mobile-preview").classList.add("hidden");
           }
         }
-      }
+      };
 
       var goOnClick = () => {
-        window.location = icons[selected].url
-      }
+        window.location = icons[selected].url;
+      };
 
       // Runs AFTER selected is changed
       var updateDom = () => {
         // The money
 
         // Recreate all buttons
-        var parent = $('.top-navbar-buttons')
+        var parent = $(".top-navbar-buttons");
         while (parent.hasChildNodes()) {
-          parent.removeChild(parent.lastChild)
+          parent.removeChild(parent.lastChild);
         }
         for (var i = 0; i < icons.length; i++) {
-          var newButton = document.createElement('button')
-          var pic = document.createElement('div')
-          pic.style.background = icons[i].iconSpriteStyleLine
-          pic.className = 'top-navbar-button-sprite'
-          newButton.appendChild(pic)
-          var txt = document.createElement('div')
-          txt.innerText = icons[i].text
-          txt.className = 'top-navbar-button-text'
-          newButton.appendChild(txt)
-          newButton.classList.add('top-navbar-button')
-          $('.top-navbar-buttons').appendChild(newButton)
-          newButton.onclick = onClickFactory(i)
+          var newButton = document.createElement("button");
+          var pic = document.createElement("div");
+          pic.style.background = icons[i].iconSpriteStyleLine;
+          pic.className = "top-navbar-button-sprite";
+          newButton.appendChild(pic);
+          var txt = document.createElement("div");
+          txt.innerText = icons[i].text;
+          txt.className = "top-navbar-button-text";
+          newButton.appendChild(txt);
+          newButton.classList.add("top-navbar-button");
+          $(".top-navbar-buttons").appendChild(newButton);
+          newButton.onclick = onClickFactory(i);
         }
 
         if (selected !== -1) {
-          $('.top-navbar-mobile-preview .text').innerText = icons[selected].text
+          $(".top-navbar-mobile-preview .text").innerText =
+            icons[selected].text;
         }
 
         // ;<button class="top-navbar-button" disabled={disabled} key={key}>
@@ -227,11 +228,10 @@
         //   />
         //   <div className="top-navbar-button-text">{text}</div>
         // </button>
-      }
+      };
     </script>
   </head>
   <body>
-    <div>hi</div>
     <div class="top-navbar-wrapper">
       <div class="top-navbar-buttons"></div>
       <div class="top-navbar-mobile-preview hidden">
@@ -242,7 +242,7 @@
       </div>
     </div>
     <script>
-      updateDom()
+      updateDom();
     </script>
   </body>
 </html>
