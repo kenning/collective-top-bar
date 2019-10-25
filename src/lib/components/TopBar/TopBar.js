@@ -17,6 +17,7 @@ class TopBar extends React.Component {
       this.setState({ selected: x })
     }
     const onClickFactory = (idx) => (evt) => {
+      debugger
       if (MOBILE_WIDTH < window.innerWidth) {
         window.location = icons[idx].url
       } else {
@@ -68,43 +69,27 @@ TopBar.defaultProps = {
     },
     {
       iconSpriteStyleLine:
-        'url(http://localhost:3000/library/blog/assets/blog1/dilbert.png) 0px 50px',
+        'url(http://localhost:3000/library/blog/assets/blog1/dilbert.png) 107px 71px',
       disabled: false,
       className: null,
-      text: 'News',
-      url: '/news/',
+      text: 'Library',
+      url: '/library/docs/welcome',
     },
     {
       iconSpriteStyleLine:
         'url(http://localhost:3000/library/blog/assets/blog1/dilbert.png) 107px 71px',
       disabled: false,
       className: null,
-      text: 'Front Page',
-      url: '/',
-    },
-    {
-      iconSpriteStyleLine:
-        'url(http://localhost:3000/library/blog/assets/blog1/dilbert.png) 0px 50px',
-      disabled: false,
-      className: null,
-      text: 'News',
-      url: '/news/',
+      text: 'Blog',
+      url: '/library/blog/',
     },
     {
       iconSpriteStyleLine:
         'url(http://localhost:3000/library/blog/assets/blog1/dilbert.png) 107px 71px',
       disabled: false,
       className: null,
-      text: 'Front Page',
-      url: '/',
-    },
-    {
-      iconSpriteStyleLine:
-        'url(http://localhost:3000/library/blog/assets/blog1/dilbert.png) 0px 50px',
-      disabled: false,
-      className: null,
-      text: 'News',
-      url: '/news/',
+      text: 'Links',
+      url: '/library/links/',
     },
   ],
 }
