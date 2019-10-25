@@ -18,6 +18,7 @@ function TopBar({ icons }) {
   const propFactory = (idx) => {
     return {
       ...icons[idx],
+      key: idx,
       onClick: onClickFactory(idx),
     }
   }
