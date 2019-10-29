@@ -6,7 +6,6 @@
         */
 
       /* Boilerplate from example */
-      .top-navbar-mobile-preview button,
       .top-navbar-button {
         position: relative;
         border: none;
@@ -16,7 +15,6 @@
       }
 
       /* Example wonky click animation */
-      .top-navbar-mobile-preview button:after,
       .top-navbar-button:after {
         pointer-events: none;
         content: "";
@@ -31,7 +29,6 @@
         transition: all 0.8s;
         border-radius: 100px;
       }
-      .top-navbar-mobile-preview button:active:after,
       .top-navbar-button:active:after {
         padding: 0;
         margin: 0;
@@ -47,14 +44,13 @@
         * Button 
         */
       :root {
-        --top-navbar-sprite-size: 50px;
+        --top-navbar-sprite-size: 30px;
+        --top-navbar-sprite-border-color: #222;
         --top-navbar-bg-color: black;
         --top-navbar-text-color: #ddd;
         --top-navbar-button-bg-color: #444;
         --top-navbar-button-anim-color: #888;
-        /* --top-navbar-mobile-breakpoint: 800px; Defined separately in js and 
-          inline at bottom!! */
-        --top-navbar-interbutton-padding: 5px;
+        --top-navbar-interbutton-padding: 2px;
       }
 
       .top-navbar-button {
@@ -63,7 +59,9 @@
         justify-content: center;
         align-items: center;
         background-color: var(--top-navbar-button-bg-color);
-        padding: 10px;
+        padding: 5px;
+
+        flex-direction: column;
       }
       .top-navbar-button:not(:first-child) {
         margin-left: var(--top-navbar-interbutton-padding);
@@ -72,11 +70,11 @@
       .top-navbar-button-sprite {
         width: var(--top-navbar-sprite-size);
         height: var(--top-navbar-sprite-size);
+        margin-bottom: 4px;
       }
 
       .top-navbar-button-text {
-        padding-left: 5px;
-        font-size: 18px;
+        font-size: 12px;
         text-align: center;
         text-decoration: none;
         color: var(--top-navbar-text-color);
@@ -98,116 +96,89 @@
       .top-navbar-buttons {
         display: flex;
       }
-      .top-navbar-mobile-preview {
-        padding-top: var(--top-navbar-interbutton-padding);
-        display: none;
-        width: 100%;
-      }
-      .top-navbar-mobile-preview .text,
-      .top-navbar-mobile-preview button {
-        color: var(--top-navbar-text-color);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 10px 10px 14px;
-      }
-      .top-navbar-mobile-preview .text {
-        margin-right: var(--top-navbar-interbutton-padding);
-        width: 100%;
-      }
-      .top-navbar-mobile-preview button {
-        width: 20%;
-        background-color: var(--top-navbar-button-bg-color);
-      }
 
       /* Responsiveness */
 
       /* Mobile */
       /* @media (max-width: --top-navbar-mobile-breakpoint) { */
       @media (max-width: 800px) {
-        .top-navbar-mobile-preview {
-          display: flex;
+        :root {
+          --top-navbar-sprite-size: 20px;
         }
         .top-navbar-button-text {
-          display: none;
+          font-size: 10px;
         }
-      }
-
-      .top-navbar-mobile-preview.hidden {
-        display: none;
       }
     </style>
     <body>
       <div class="top-navbar-wrapper">
         <div class="top-navbar-buttons"></div>
-        <div class="top-navbar-mobile-preview hidden">
-          <div class="text"></div>
-          <button class="go-button">
-            GO
-          </button>
-        </div>
       </div>
     </body>
     <script>
       /* Initialization */
       $ = document.querySelector.bind(document);
 
-      var MOBILE_WIDTH = 800;
-
-      var selected = -1;
-
       var icons = [
         {
-          iconSpriteStyleLine:
-            "url(http://localhost:3000/library/blog/assets/blog1/dilbert.png) 107px 71px",
-          text: "Front Page",
+          imgSrc:
+            "http://safarisurfschool.com/wp-content/uploads/2012/07/safari-sustainability-world-icon.png",
+          text: "Collective",
           url: "/"
         },
         {
-          iconSpriteStyleLine:
-            "url(http://localhost:3000/library/blog/assets/blog1/dilbert.png) 107px 71px",
+          imgSrc:
+            "http://safarisurfschool.com/wp-content/uploads/2012/07/safari-sustainability-world-icon.png",
+          text: "Gameplay",
+          url: "/"
+        },
+        {
+          imgSrc:
+            "http://safarisurfschool.com/wp-content/uploads/2012/07/safari-sustainability-world-icon.png",
+          text: "Community",
+          url: "/"
+        },
+        {
+          imgSrc:
+            "http://safarisurfschool.com/wp-content/uploads/2012/07/safari-sustainability-world-icon.png",
+          text: "Cards",
+          url: "/collection"
+        },
+        {
+          imgSrc:
+            "http://safarisurfschool.com/wp-content/uploads/2012/07/safari-sustainability-world-icon.png",
           text: "Library",
           url: "/library/docs/welcome"
         },
         {
-          iconSpriteStyleLine:
-            "url(http://localhost:3000/library/blog/assets/blog1/dilbert.png) 107px 71px",
-          text: "Blog",
-          url: "/library/blog/"
+          imgSrc:
+            "http://safarisurfschool.com/wp-content/uploads/2012/07/safari-sustainability-world-icon.png",
+          text: "Discord",
+          url: "https://discord.gg/C8fTNVt"
         },
         {
-          iconSpriteStyleLine:
-            "url(http://localhost:3000/library/blog/assets/blog1/dilbert.png) 107px 71px",
-          text: "Links",
-          url: "/library/links/"
+          imgSrc:
+            "http://safarisurfschool.com/wp-content/uploads/2012/07/safari-sustainability-world-icon.png",
+          text: "Subreddit",
+          url: "https://reddit.com/collectivecg"
+        },
+        {
+          imgSrc:
+            "http://safarisurfschool.com/wp-content/uploads/2012/07/safari-sustainability-world-icon.png",
+          text: "Creator",
+          url: "/creator"
         }
       ];
 
       var onClickFactory = idx => evt => {
-        if (MOBILE_WIDTH < window.innerWidth) {
-          window.location = icons[idx].url;
-        } else {
-          if (selected !== idx) {
-            selected = idx;
-            updateMobilePreviewText();
-
-            $(".top-navbar-mobile-preview").classList.remove("hidden");
-          } else {
-            selected = -1;
-            $(".top-navbar-mobile-preview").classList.add("hidden");
-          }
-        }
-      };
-
-      var goOnClick = () => {
-        window.location = icons[selected].url;
+        window.location = icons[idx].url;
       };
 
       // Create every button
       for (var i = 0; i < icons.length; i++) {
         var newButton = document.createElement("button");
-        var pic = document.createElement("div");
-        pic.style.background = icons[i].iconSpriteStyleLine;
+        var pic = document.createElement("img");
+        pic.src = icons[i].imgSrc;
         pic.className = "top-navbar-button-sprite";
         newButton.appendChild(pic);
         var txt = document.createElement("div");
@@ -218,16 +189,6 @@
         $(".top-navbar-buttons").appendChild(newButton);
         newButton.onclick = onClickFactory(i);
       }
-
-      $(".go-button").onclick = goOnClick;
-
-      // Runs AFTER selected is changed
-      var updateMobilePreviewText = () => {
-        if (selected !== -1) {
-          $(".top-navbar-mobile-preview .text").innerText =
-            icons[selected].text;
-        }
-      };
     </script>
   </head>
 </html>
